@@ -15,7 +15,8 @@ public class CheckEven
 	
 		 public static boolean isEven(int n) 
    		 { 
-      		  return (n % 2 == 0); 
+      		  return (n % 2 != 0);
+		 /** Made changes for this project----Person 1*/
   		  } 
       
   
