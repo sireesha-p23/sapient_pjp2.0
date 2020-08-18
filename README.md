@@ -2,7 +2,7 @@
 
 ### java-project folder:
 a) created a local and remote repositories.
-   created loacal and remote branches Feature, Dev, QA, master, Delivery.
+   created local and remote branches Feature, Dev, QA, master, Delivery.
    Added a project folder(proj to check even number) and pushed it to feature branch.
    Merged changes made by person 1(Avinash-B) via pull request.
    Ensured the code is in sync. with latest changes across all branches.
