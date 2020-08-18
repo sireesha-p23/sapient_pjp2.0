@@ -1,7 +1,7 @@
 ## sapient_pjp2.0 git assignment
 
 ### java-project folder:
-a) Created a local and remote repositories.
+a) Created local and remote repositories.
    Created local and remote branches Feature, Dev, QA, master, Delivery.
    Added a project folder(proj to check even number) and pushed it to feature branch.
    Merged changes made by person 1(Avinash-B) via pull request.
@@ -18,6 +18,6 @@ c) Made a dummy commit and reverted it.
   d) Ran the git help commands and read the docs.
   
   ### Git_assignments_screenshots folder:
-   Contains screenshots of remote(gitHub) commits history.
-   Contains screenshots of local commits history.(git log,git reflog after reset,rebase,revert).
+   remote_repo_commits_history folder: Contains screenshots of remote(gitHub) commits history.
+   local_repo_history folder: Contains screenshots of local commits history.(git log,git reflog after reset,rebase,revert).
  
