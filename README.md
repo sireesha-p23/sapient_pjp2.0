@@ -1,4 +1,4 @@
-# java-week-2
+## 1)java-week-2
 
 ### DateTimeCalculatorConsole_IO:
 
@@ -10,12 +10,12 @@ Also creates files (history100.txt,history100.xml,history100.csv,history100.json
 mp4 video that contains screen recording of DateTimeCalculatorConsole_IO project execution and outputs.
 
 
-# jenkins-assignment:
+## 2)jenkins-assignment:
 
 contains jenkins UI and pipeline syntax of DateTimeCalculator (maven)project.
 
 
-# week-2_javaBulkFilesProcessing:
+## 3)week-2_javaBulkFilesProcessing:
 
 ### DateTimeCalcFileProcessing:
 
@@ -30,11 +30,11 @@ mp4 video that contains screen recording of DateTimeCalcFileProcessing project e
 Output files(historyoutput.csv,historyoutput.txt,historyoutput.xml,historyoutput.json) generated are included in OutputFilesGenerated folder.
 
 
-# week-2-mavenassignment.txt:
+## 4)week-2-mavenassignment.txt:
 
 contain answers and shell commands of given assignment.
 
-# week-3-postgresql:
+## 5)week-3-postgresql:
 
 ### DateTimeCalcPsql:
 
