@@ -19,7 +19,7 @@ contains jenkins UI and pipeline syntax of DateTimeCalculator (maven)project.
 
 ### DateTimeCalcFileProcessing:
 
-performs calculations on dates, takes inputs from random.txt file(contains 100000 inputs generated using java code) and writes outputs to files(historyoutput.csv,historyoutput.txt,historyoutput.xml,historyoutput.json).
+performs calculations on dates, takes inputs from RandomNumbers.txt file(contains 100000 inputs generated using java code) and writes outputs to files(historyoutput.csv,historyoutput.txt,historyoutput.xml,historyoutput.json).
 
 ### DateTimeCalcFileProcessing_executionandOutputs.mp4:
 
@@ -38,7 +38,7 @@ contain answers and shell commands of given assignment.
 
 ### DateTimeCalcPsql:
 
-performs calculations on dates, takes inputs from random.txt file(contains 100000 inputs) and writes outputs to files(historyoutput.csv,historyoutput.txt,historyoutput.xml,historyoutput.json).
+performs calculations on dates, takes inputs from RandomNumbers.txt file(contains 100000 inputs) and writes outputs to files(historyoutput.csv,historyoutput.txt,historyoutput.xml,historyoutput.json).
 And also inserts values from files(random.txt,historyoutput.txt) into tables created and performs query operations, given as preparedStatements in java code.
 
 ### psqlDB_tables_screenshots:
