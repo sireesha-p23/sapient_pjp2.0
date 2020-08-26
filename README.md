@@ -44,3 +44,26 @@ And also inserts values from files(random.txt,historyoutput.txt) into tables cre
 ### psqlDB_tables_screenshots:
 
 contains db creation, tables creation, tables values before and after insertion of values.
+
+## 6)DateTimeCalWeb-week-2:
+
+### DateTimeCalWeb :
+
+DateTime calculator using jsp,Servlets.performs calculations on dates, takes inputs from webpage and processes users request and then displays result to webpage.
+
+### DateTimeCalWeb_executionandOutput:
+
+mp4 video that contains screen recording of DateTimeCalWeb project execution and webpage outputs.
+
+
+## 7)Income_Java_assignments:
+
+### SapientCodingExersise:
+
+contains respective java project.Takes input from Income.csv file and writes output to IncomeOuputs.csv file
+
+### Income_console_output:
+
+contains console ouput.
+
+
