@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html><head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+     <meta http-equiv="PICS-Label" content="(PICS-1.1 &quot;http://www.classify.org/safesurf/&quot; L gen true for &quot;http://www.onlineconversion.com/&quot; r (SS~~000 1))">
+
+<title>Online Conversion - Determine Day and Week Number</title>
+<meta name="DESCRIPTION" content="Calculate the day number and week number of a given date.">
+<meta name="KEYWORDS" content="date, day, week, number, julian, calendar, daynumber, weeknumber">
+
+     <link href="./assets/style.css" rel="stylesheet" type="text/css">
+
+     <script src="./assets/misc_functions.js" type="text/javascript"></script>
+
+<script language="Javascript" src="date_time_check.js" type="text/javascript"></script>
+
+<script language="JavaScript"><!--
+
+
+function netscapeKeyPress(e) {
+if (e.which == 13)
+   Calculate_Form();
+}
+
+function microsoftKeyPress() {
+if (window.event.keyCode == 13)
+   Calculate_Form();
+}
+
+if (navigator.appName == 'Netscape') {
+window.captureEvents(Event.KEYPRESS);
+window.onKeyPress = netscapeKeyPress;
+}
+
+function y2k(number) { return (number < 1000) ? number + 1900 : number; }
+var weekday = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+
+function Reset_Result() {
+document.Form_Day_Week_Number.day_result.value = "";
+document.Form_Day_Week_Number.week_result.value = "";
+document.Form_Day_Week_Number.weekday_result.value = "";
+document.Form_Day_Week_Number.week_result_eur.value = "";
+}
+
+function Calculate_Form() {
+var date_format = "%m/%d/%y";
+var theDate;
+with (document.Form_Day_Week_Number) {
+theDate = buildDate(the_date.value,date_format);
+}
+
+if (!(typeof theDate == "object")) {
+alert("The Date entered is not in a valid format!!");
+return;
+}
+
+// This code calculates the day number
+function makeArray()    {
+this[0] = makeArray.arguments.length;
+for (i = 0; i<makeArray.arguments.length; i++)
+   this[i+1] = makeArray.arguments[i];
+}
+
+var accumulate    = new makeArray(  0, 31, 59, 90,120,151,181,212,243,273,304,334);
+var accumulateLY  = new makeArray(  0, 31, 60, 91,121,152,182,213,244,274,305,335);
+
+function LeapYear(year) {
+//if ((year/4)   != Math.floor(year/4))   return false;
+//if ((year/100) != Math.floor(year/100)) return true;
+//if ((year/400) != Math.floor(year/400)) return false;
+//return true;
+year = y2k(year);
+return (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) ? 1 : 0;
+}
+
+function getJulian(day,month,year) {
+if (LeapYear(year)){
+   return (day + accumulateLY[month]);}
+else
+   return (day + accumulate[month]);
+}
+// End code to calculate the day Number
+
+// Code to calculate week number
+function getWeek(day,month,year) {
+year = y2k(year);
+var when = new Date(year,month,day);
+var newYear = new Date(year,0,1);
+var offset = 7 + 1 - newYear.getDay();
+if (offset == 8) offset = 1;
+var daynum = ((Date.UTC(y2k(year),when.getMonth(),when.getDate(),0,0,0) - Date.UTC(y2k(year),0,1,0,0,0)) /1000/60/60/24) + 1;
+var weeknum = Math.floor((daynum-offset+7)/7);
+if (weeknum == 0) {
+   year--;
+   var prevNewYear = new Date(year,0,1);
+   var prevOffset = 7 + 1 - prevNewYear.getDay();
+   if (prevOffset == 2 || prevOffset == 8) weeknum = 53; else weeknum = 52;
+}
+return weeknum;
+}
+// End code to calculate week number
+//_________________________________________________________________________________________
+
+// function added by slavic (thank you Internet!)
+function isLeapYear(yr) {
+return new Date(yr,2-1,29).getDate()==29;
+}
+
+// the new Week Number code
+/**
+* Returns the week number for this date. dowOffset is the day of week the week
+* "starts" on for your locale - it can be from 0 to 6. If dowOffset is 1 (Monday),
+* the week returned is the ISO 8601 week number.
+* @param int dowOffset
+* @return int
+*/
+Date.prototype.getWeek = function () {
+/*getWeek() was developed by Nick Baicoianu at MeanFreePath: http://www.meanfreepath.com */
+
+var newYear = new Date(this.getFullYear(),0,1);
+var day = newYear.getDay() - 1; //the day of week the year begins on
+day = (day >= 0 ? day : day + 7);
+var daynum = Math.floor((this.getTime()-newYear.getTime() - (this.getTimezoneOffset()-newYear.getTimezoneOffset())*60000)/86400000) + 1;
+var weeknum;
+//if the year starts before the middle of a week
+if(day < 4)
+{
+weeknum = Math.floor((daynum+day-1)/7) + 1;
+if(weeknum > 52)
+{
+     nYear = new Date(this.getFullYear() + 1,0,1);
+     nday = nYear.getDay() - 1;
+     nday = nday >= 0 ? nday : nday + 7;
+     /*if the next year starts before the middle of
+     the week, it is week #1 of that year*/
+     weeknum = nday < 4 ? 1 : 53;
+}
+}
+else 
+{
+weeknum = Math.floor((daynum+day -1 )/7);
+if(weeknum == 0)
+{
+     prevYear = new Date(this.getFullYear()-1,0,1);
+     prevDay = prevYear.getDay()-1;
+     prevDay = (prevDay >= 0 ? prevDay : prevDay + 7);
+     if( prevDay==3 || ( isLeapYear(prevYear.getFullYear()) && prevDay==2 ) )
+     { weeknum = 53; }
+          else weeknum = 52;
+}
+}
+return weeknum;
+};
+
+document.Form_Day_Week_Number.day_result.value = getJulian(theDate.getDate(),theDate.getMonth()+1,theDate.getYear());
+document.Form_Day_Week_Number.week_result.value = getWeek(theDate.getDate(),theDate.getMonth(),theDate.getYear());
+document.Form_Day_Week_Number.week_result_eur.value = theDate.getWeek(1);
+document.Form_Day_Week_Number.weekday_result.value = weekday[theDate.getDay()];
+}
+
+//--></script>
+</head>
+
+<body>
+
+<div class="container">   <!-- Start of container -->
+     <div class="header_area">   <!-- Start of header area -->
+          <div class="header">
+               <div class="logo">
+                    
+               </div>
+          </div>
+     </div>     <!-- End of header area -->
+     
+     <div class="main_content">    <!-- Start of Main Content -->
+          <div class="content_left">  <!-- Start of Left Content -->
+               <div class="content_heading">
+                    <h2>Welcome to DateCalculator</h2>
+
+<p class="red">Calculate the Day Number(out of 365 days) and Week Number (out of 52 weeks) </p>
+
+<!-- JavaScript Detection -->
+<script language="JavaScript" src="./assets/browser_detection.js" type="text/javascript"></script>
+<noscript>
+<blockquote>
+<p><font size="3" color="#FF0000"><b>You do not have JavaScript enabled.</b></font><br>
+<font size="2" color="#000080">The conversions on this site require the use of JavaScript so please enable before continuing.
+For assistance in enabling JavaScript, please contact the webmaster.</font></p>
+</blockquote>
+</noscript>
+
+               </div>
+
+
+<center>
+<form name="Form_Day_Week_Number">
+<table>
+<tbody><tr>
+<td>
+  <p>Enter the Date you wish to calculate:<br><input type="date" name="the_date" onfocus="javascript:Reset_Result();" onkeypress="microsoftKeyPress();"></p>
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  <br>
+  <input type="button" value="Calculate" onclick="javascript:Calculate_Form();">
+</td>
+</tr>
+<tr>
+
+<td align="center">
+  <br>
+  That is Day Number:<br>
+  <input type="text" name="day_result" size="25" readonly="">
+</td>
+</tr>
+<tr>
+<td align="center">
+
+  <br>
+  That is Week Number:<br><br><input type="text" name="week_result_eur" size="25" readonly="">
+</td>
+</tr>
+<tr>
+
+<td align="center">
+  <br>
+  That day happens to be a:<br>
+  <input type="text" name="weekday_result" size="25" readonly="">
+</td>
+</tr>
+</tbody></table>
+
+</form>
+</center>
+
+<!-- Center Bottom -->
+
+<!-- End Center Bottom -->
+
+          </div>   <!-- End of Left Content -->
+     </div>     <!-- End of Main Content -->
+     
+    
+     
+</div> <!-- End of container -->
+
+
+
+
+</body></html>
+
